@@ -27,7 +27,7 @@ const App: React.FC = () => {
   const nextId = incidents.length + 1 > 35 ? incidents.length + 1 : 36;
 
   return (
-    <div>
+    <div className="min-h-screen bg-[#0d1117] text-gray-200">
       <TopNavBar
         selectedSeverity={selectedSeverity}
         setSelectedSeverity={setSelectedSeverity}
@@ -45,8 +45,8 @@ const App: React.FC = () => {
       )}
 
       {/* Display Box */}
-      <div className="mt-8 p-6 border border-gray-300 rounded-lg text-center">
-        <h2 className="text-2xl font-semibold">AI Safety Incidents</h2>
+      <div className="mt-8 p-6 border border-gray-700 rounded-lg text-center bg-[#161b22] mx-4 md:mx-16">
+        <h2 className="text-2xl font-semibold text-blue-400">AI Safety Incidents</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
           {sortedIncidents.map((incident) => (
