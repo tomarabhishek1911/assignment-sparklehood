@@ -22,8 +22,11 @@ npm run dev
 
 📋 Technologies Used
 React (with TypeScript)
+
 HTML5
+
 CSS3 (TailwindCSS)
+
 TypeScript
-FrameWork -> React
+
 Local component state management (No backend)
