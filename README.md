@@ -1,12 +1,27 @@
-# hosted link -> https://assignment-sparklehood.netlify.app/
+# Live link -> https://assignment-sparklehood.netlify.app/
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Steps to run this locally
-1. to install it locally download the zip file
-2. unzip the file
-3. run it in VS code
-4. enter in the assignment-sparklehood folder using command 
-   cd assignment-sparklehood
-5. then to install the npm using command
-   npm install
-6. then run the project using command
-   npm run dev
+#🚀 Getting Started
+
+#Prerequisites
+
+Node.js (v14 or above) and npm installed.
+Installation
+1. Download and unzip the zip file in your device from -> https://github.com/tomarabhishek1911/assignment-sparklehood/
+```2. Install dependencies:
+npm install
+```
+
+```3. Start the development server:
+
+npm run dev
+```
+
+4. Open localhost visible in terminal in your browser to view the app.
+
+📋 Technologies Used
+React (with TypeScript)
+HTML5
+CSS3 (TailwindCSS)
+TypeScript
+FrameWork -> React
+Local component state management (No backend)
