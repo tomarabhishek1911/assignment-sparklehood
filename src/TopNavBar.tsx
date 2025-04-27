@@ -1,115 +1,50 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-interface Incident {
-  id: number;
-  title: string;
-  description: string;
-  severity: string;
-  reported_at: string;
-  long_description: string;
+interface TopNavBarProps {
+  selectedSeverity: string;
+  setSelectedSeverity: (severity: string) => void;
+  handleSortToggle: () => void;
+  sortOrder: 'latest' | 'oldest';
+  openForm: () => void;
 }
 
-interface ReportIncidentFormProps {
-  onClose: () => void;
-  onSubmit: (incident: Incident) => void;
-  nextId: number;
-}
-
-const ReportIncidentForm: React.FC<ReportIncidentFormProps> = ({ onClose, onSubmit, nextId }) => {
-  const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    severity: 'Low',
-    reported_at: '',
-    long_description: '',
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = () => {
-    if (Object.values(formData).some(value => value.trim() === '')) {
-      alert('All fields must be filled!');
-      return;
-    }
-
-    const newIncident: Incident = {
-      id: nextId,
-      ...formData,
-    };
-
-    onSubmit(newIncident);
-    onClose();
-  };
-
+const TopNavBar: React.FC<TopNavBarProps> = ({ selectedSeverity, setSelectedSeverity, handleSortToggle, sortOrder, openForm }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
-      <div className="bg-[#0d1117] p-6 rounded-lg w-96 shadow-2xl relative border border-gray-700">
-        <h2 className="text-2xl font-bold text-blue-400 mb-6 text-center">Report New Incident</h2>
+    <div className="flex flex-col md:flex-row justify-between items-center px-6 py-4 bg-[#161b22] shadow-md gap-4 md:gap-0">
+      <h1 className="text-2xl font-bold text-blue-400 text-center md:text-left">
+        AI Safety Incident Dashboard
+      </h1>
 
-        <input
-          name="title"
-          placeholder="Title"
-          value={formData.title}
-          onChange={handleChange}
-          className="bg-[#161b22] border border-gray-600 text-gray-200 w-full p-3 mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-
-        <input
-          name="description"
-          placeholder="Short Description"
-          value={formData.description}
-          onChange={handleChange}
-          className="bg-[#161b22] border border-gray-600 text-gray-200 w-full p-3 mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-
-        <select
-          name="severity"
-          value={formData.severity}
-          onChange={handleChange}
-          className="bg-[#161b22] border border-gray-600 text-gray-200 w-full p-3 mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      <div className="flex justify-center md:justify-center w-full md:w-auto">
+        <button
+          onClick={openForm}
+          className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold px-4 py-2 rounded-md hover:opacity-90 transition w-full md:w-auto"
         >
+          Report New Incident
+        </button>
+      </div>
+
+      <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 w-full md:w-auto">
+        <select
+          value={selectedSeverity}
+          onChange={(e) => setSelectedSeverity(e.target.value)}
+          className="bg-[#0d1117] border border-gray-700 text-gray-200 p-2 rounded-md w-full md:w-auto"
+        >
+          <option value="All">All</option>
           <option value="Low">Low</option>
           <option value="Medium">Medium</option>
           <option value="High">High</option>
         </select>
 
-        <input
-          name="reported_at"
-          type="datetime-local"
-          value={formData.reported_at}
-          onChange={handleChange}
-          className="bg-[#161b22] border border-gray-600 text-gray-200 w-full p-3 mb-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-
-        <textarea
-          name="long_description"
-          placeholder="Long Description"
-          value={formData.long_description}
-          onChange={handleChange}
-          className="bg-[#161b22] border border-gray-600 text-gray-200 w-full p-3 mb-6 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          rows={4}
-        />
-
-        <div className="flex justify-between">
-          <button
-            onClick={onClose}
-            className="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-500 transition"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleSubmit}
-            className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold px-4 py-2 rounded-md hover:opacity-90 transition"
-          >
-            Submit
-          </button>
-        </div>
+        <button
+          onClick={handleSortToggle}
+          className="bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold px-4 py-2 rounded-md hover:opacity-90 transition w-full md:w-auto"
+        >
+          Sort: {sortOrder === 'latest' ? 'Newest First' : 'Oldest First'}
+        </button>
       </div>
     </div>
   );
 };
 
-export default ReportIncidentForm;
+export default TopNavBar;
