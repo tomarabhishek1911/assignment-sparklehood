@@ -1,6 +1,23 @@
 # Live link -> https://assignment-sparklehood.netlify.app/
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#✨ Features
+
+Display a list of AI safety incidents (Title, Severity, and Reported Date & Time).
+
+Filter incidents by severity (All, Low, Medium, High).
+
+Sort incidents by Reported Date (Newest First, Oldest First).
+
+Expand/Collapse each incident to view the full Description.
+
+Report a new AI safety incident via a form with basic form validation.
+
+Responsive layout using Flexbox for mobile and desktop screens.
+
+Clean, simple, and user-friendly design.
+
+
 #🚀 Getting Started
 
 #Prerequisites
