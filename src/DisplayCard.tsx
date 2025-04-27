@@ -34,7 +34,15 @@ const DisplayCard: React.FC<DisplayCardProps> = ({ incident }) => {
       </div>
 
       <p className="text-gray-500 mt-4 text-sm">
-        Reported At: {new Date(incident.reported_at).toLocaleDateString('en-GB')}
+        Reported At: {new Date(incident.reported_at).toLocaleString('en-GB', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+        })}
       </p>
 
       {showMore && (
