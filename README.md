@@ -21,6 +21,7 @@ npm run dev
 4. Open localhost visible in terminal in your browser to view the app.
 
 📋 Technologies Used
+
 React (with TypeScript)
 
 HTML5
