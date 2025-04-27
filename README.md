@@ -7,12 +7,13 @@
 Node.js (v14 or above) and npm installed.
 Installation
 1. Download and unzip the zip file in your device from -> https://github.com/tomarabhishek1911/assignment-sparklehood/
-```2. Install dependencies:
+2. Install dependencies:
+```
 npm install
 ```
 
-```3. Start the development server:
-
+3. Start the development server:
+```
 npm run dev
 ```
 
